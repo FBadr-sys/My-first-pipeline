@@ -3,26 +3,26 @@ pipeline {
     stages {
         stage('packageging') {
             steps {
-                sh 'mvn clean package -P dev'
+                echo "Hello Stage 1"
             }
         }
         stage('integrationtest') {
             steps {
-                sh 'mvn clean package -P dev'
+                echo "Hello Stage 2"
             }
         }
         stage('build_docker_image') {
             steps {
-                sh 'mvn clean package -P dev'
+                echo "Hello Stage 3"
             }
         }
         stage('run_container') {
             steps {
-                sh 'mvn clean verify -P integration-test'
+                echo "Hello Stage 4"
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                    echo "Hello Stage 5"
                 }
             }
         }
